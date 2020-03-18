@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section><h1>probe-rs</h1></section>
+				<!-- Motivation -->
+				<section>What is a debug probe?</section>
+				<section>picture of a debug probe - separate</section>
+				<section>Why do we need a debug probe?</section>
+				<section>Library for Debug-Probes</section>
+				<section><h2>Different Probes</h2>
+					<ul>
+						<li>J-Link</li>
+						<li>ST-Link</li>
+						<li>CMSIS-DAP based</li>
+					</ul>
+				</section>
+				<section><h2>Different Architectures</h2>
+					<ul>
+						<li>ARM</li>
+						<li>RISC-V</li>
+					</ul>
+				</section>
+				<section>Access to memory</section>
+				<section>Control of CPU</section>
+				<section>Enable creation of tools</section>
+				<section>cargo-flash</section>
+				<section>A debugger?</section>
+				<section>Tracing tools</section>
+				<section>Execution time analyis</section>
+				<section>avatar-rs</section>
+				<section>Thank you!</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
