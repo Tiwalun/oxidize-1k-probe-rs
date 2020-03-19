@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="css/theme/solarized.css">
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="lib/css/monokai.css">
+	<link rel="stylesheet" href="lib/css/solarized-light.css">
 
 
 	<link rel="stylesheet" type="text/css" href="plugin/asciinema/asciinema-player.css" />
@@ -34,13 +34,17 @@
 				<h1>probe-rs</h1>
 			</section>
 			<!-- - Welcome 
-					 - Talk about probe-rs
+					 - Talk about probe-rs libray
+					 - related
 					 - Name
 					 - developer behind probe-rs
 
 					 - what is probe-rs?
 					 - library for debug probes
 				-->
+			<section>
+				<h2>About me</h2>
+			</section>
 			<section>
 				<section>
 					<h2>What is a debug probe?</h2>
@@ -49,7 +53,9 @@
 					 - External Control of a Microcontroller
 				-->
 				<section>
-					<img data-src="Segger_J-Link_EDU.jpg">
+					<p class="stretch">
+						<img data-src="Segger_J-Link_EDU.jpg">
+					</p>
 				</section>
 				<!-- 
 					- Set of cables
@@ -62,6 +68,7 @@
 					<ul>
 						<li>Flashing</li>
 						<li>Debugging</li>
+						<li>...</li>
 					</ul>
 				</section>
 				<!--
@@ -94,8 +101,9 @@
 					<h2>Memory Access</h2>
 				</section>
 				<section>
+					<h2>Read</h2>
 					<pre>
-					<code data-trim>
+						<code class="rust" data-trim>
 						use probe_rs::Core;
 
 						let core = Core::auto_attach("nrf52")?;
@@ -103,7 +111,7 @@
 						// Read a single 32 bit word.
 						let word = core.read_word_32(0x2000_0000)?;
 					</code>
-					</pre>
+				</pre>
 				</section>
 			</section>
 			<section>
@@ -153,7 +161,7 @@
 			</section>
 
 			<section>
-				<h3>What can you do with it?</h3>
+				<h3>Improving the embedded debug experience</h3>
 			</section>
 			<section>
 				<section>
@@ -162,32 +170,47 @@
 					</p>
 				</section>
 				<section>
-					<div class="stretch">
-						<script class="stretch" id="asciicast-2sacfuUpeIrPMyq4tmAxlepr4"
-							src="https://asciinema.org/a/2sacfuUpeIrPMyq4tmAxlepr4.js" data-autoplay="false"></script>
-					</div>
-
+					<h2>Demonstration</h2>
+					<asciinema-player class="stretch" src="https://asciinema.org/a/fVUadCag09ti6klsUAWzInH2l.cast"
+						data-autoplay="true" cols="120" rows="20" idle-time-limit="1"></asciinema-player>
 				</section>
 				<section>
-					<h2>Supported for ARM</h2>
+					<h2>Supports all ARM microcontrollers*</h2>
+
+					<tiny class="fragment fade-in" data-fragment-index="1">*with <a
+							href="https://developer.arm.com/tools-and-software/embedded/cmsis/cmsis-packs">CMSIS-PACKs</a>
+					</tiny>
+				</section>
+			</section>
+			</section>
+			<section>
+				<section>
+					<h2>WIP: Debugger</h2>
+					<a href="https://github.com/probe-rs/vscode">https://github.com/probe-rs/vscode</a>
+				</section>
+				<section>
+					<h2>Uses the Debug Adapter Protocol </h2>
+					<a
+						href="https://microsoft.github.io/debug-adapter-protocol/">https://microsoft.github.io/debug-adapter-protocol/</a>
 				</section>
 			</section>
 			<section>
-				<h2>Debugger</h2>
-			</section>
-			<section>
-				<h2>GDB Server</h2>
+				<h2>WIP: GDB Server</h2>
 			</section>
 			<section>
 				<h2>Tracing tools</h2>
+				<a href="https://github.com/probe-rs/itm-trace">https://github.com/probe-rs/itm-tracer</a>
 			</section>
 			<section>
 				<h2>Worst Case Execution Time Analysis</h2>
 			</section>
 			<section>
+				<h2>We need your help!</h2>
+			</section>
+			<section>
 				<h2>Thank you!</h2>
 				<p>
-					@tiwalun
+					<a href="https://github.com/tiwalun">@tiwalun</a>
 				</p>
 				<p>
 					<a href="https://probe.rs/">https://probe.rs/</a>
@@ -204,11 +227,22 @@
 		// - https://github.com/hakimel/reveal.js#dependencies
 		Reveal.initialize({
 			hash: true,
+			anything: [
+				{
+					classname: "asciicast",
+					defaults: { theme: 'solarized', fontSize: '15px' },
+					initialize: (function (container, options) {
+						asciinema.player.js.CreatePlayer(container, options.URL, options);
+					})
+				}
+			],
 			dependencies: [
 				{ src: 'plugin/markdown/marked.js' },
 				{ src: 'plugin/markdown/markdown.js' },
 				{ src: 'plugin/highlight/highlight.js' },
-				{ src: 'plugin/notes/notes.js', async: true }
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/asciinema/asciinema-player.js' },
+				{ src: 'plugin/anything/anything.js' }
 			]
 		});
 	</script>
