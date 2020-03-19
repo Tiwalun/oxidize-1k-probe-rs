@@ -32,19 +32,24 @@
 		<div class="slides">
 			<section>
 				<h1>probe-rs</h1>
+				<p>
+					Dominik Böhi, @tiwalun
+				</p>
+				<p>
+					Oxidize 1K
+				</p>
 			</section>
 			<!-- - Welcome 
-					 - Talk about probe-rs libray
-					 - related
 					 - Name
-					 - developer behind probe-rs
+					 - one of the developers behind probe-rs.
+
+					 - we can have better development tools
+
+					 - how probe-rs can be used to build them
 
 					 - what is probe-rs?
 					 - library for debug probes
 				-->
-			<section>
-				<h2>About me</h2>
-			</section>
 			<section>
 				<section>
 					<h2>What is a debug probe?</h2>
@@ -111,6 +116,14 @@
 						// Read a single 32 bit word.
 						let word = core.read_word_32(0x2000_0000)?;
 					</code>
+					<!--
+						-- Reading memory
+						-- Simple example
+						-- open first probe
+						-- use chip: Nordic NRF52
+						-- read memory
+						-- write possible as well
+					-->
 				</pre>
 				</section>
 			</section>
@@ -121,7 +134,7 @@
 				<section>
 					<h2>Reset</h2>
 					<pre>
-					<code data-trim>
+					<code class="rust" data-trim>
 						use probe_rs::Core;
 
 						let core = Core::auto_attach("nrf52")?;
@@ -151,6 +164,11 @@
 					<li>ST-LINK</li>
 					<li>CMSIS-DAP based</li>
 				</ul>
+				<!-- 
+					- This functionality works for all these probes
+					- CMSIS DAP: Open standard by ARM for debug probes
+					-  CMSIS DAP: Usb protocol
+				-->
 			</section>
 			<section>
 				<h2>Different Architectures</h2>
@@ -163,11 +181,24 @@
 			<section>
 				<h3>Improving the embedded debug experience</h3>
 			</section>
+			<!--
+				- As mentioned in the title
+				- What can you do with probe-rs?
+				- Both: what is currently done / in progress
+				-       what could be done?
+			-->
 			<section>
 				<section>
 					<h2>cargo-flash</h2>
 					<p><a href="https://github.com/probe-rs/cargo-flash">https://github.com/probe-rs/cargo-flash</a></a>
 					</p>
+					<!--
+						- a lot of people might know openoocd
+						- great project, but not always very easy to use
+						- Rust projects use Cargo
+						- cargo-flash is a subcommand
+						- flashing with almost no setup
+					-->
 				</section>
 				<section>
 					<h2>Demonstration</h2>
@@ -175,12 +206,16 @@
 						data-autoplay="true" cols="120" rows="20" idle-time-limit="1"></asciinema-player>
 				</section>
 				<section>
-					<h2>Supports all ARM microcontrollers*</h2>
+					<h2>Supports all Cortex-M microcontrollers*</h2>
 
 					<tiny class="fragment fade-in" data-fragment-index="1">*with <a
 							href="https://developer.arm.com/tools-and-software/embedded/cmsis/cmsis-packs">CMSIS-PACKs</a>
 					</tiny>
 				</section>
+				<!-- 
+					- All ARM Cortex-M  micro controllers are supported
+					- where a cmsis pack is available
+				-->
 			</section>
 			</section>
 			<section>
@@ -204,8 +239,26 @@
 			<section>
 				<h2>Worst Case Execution Time Analysis</h2>
 			</section>
+			<!--
+				- Halt the core, step the core
+				- Use information from stepping for analysis
+			-->
 			<section>
 				<h2>We need your help!</h2>
+				<!-- 
+					We think we can have better tools for embedded development.
+
+					probe-rs aims to help with that, by providing a building block.
+
+					If you want to flash something, use cargo-flash.
+					We appreciate all feedback, if it works or not.
+
+					Testing this is hard...
+
+					If you're interesteed in debugging, feel free to contribute code
+
+					Maybe you have an idea for a new tool?
+				-->
 			</section>
 			<section>
 				<h2>Thank you!</h2>
