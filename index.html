@@ -1,32 +1,39 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/solarized.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section><h1>probe-rs</h1></section>
-				<!-- - Welcome 
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+
+	<link rel="stylesheet" type="text/css" href="plugin/asciinema/asciinema-player.css" />
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>probe-rs</h1>
+			</section>
+			<!-- - Welcome 
 					 - Talk about probe-rs
 					 - Name
 					 - developer behind probe-rs
@@ -34,19 +41,24 @@
 					 - what is probe-rs?
 					 - library for debug probes
 				-->
+			<section>
 				<section>
-				<section><h2>What is a debug probe?</h2></section>
+					<h2>What is a debug probe?</h2>
+				</section>
 				<!-- - Hardware
 					 - External Control of a Microcontroller
 				-->
-				<section>picture of a debug probe - separate</section>
+				<section>
+					<img data-src="Segger_J-Link_EDU.jpg">
+				</section>
 				<!-- 
 					- Set of cables
 					- Connection to pins
 					- Can also be included on Evaluation Board
 					- Usually USB connection
 				-->
-				<section><h2>Use Cases</h2>
+				<section>
+					<h2>Use Cases</h2>
 					<ul>
 						<li>Flashing</li>
 						<li>Debugging</li>
@@ -56,29 +68,33 @@
 					Why do we need debug probes?
 					- for these use cases here, especially during development
 				-->
-				</section>
+			</section>
+			<section>
 				<section>
-					<section><h2>What is probe-rs?</h2></section>
-					<!-- 
+					<h2>What is probe-rs?</h2>
+				</section>
+				<!-- 
 						- a Rust libray
 						- provide your application with access to debug probes
 					-->
-					<section>
-						<h3>
-							Library for controlling <br />
-							<span class="fragment strike"  data-fragment-index="1">debug probes</span><br />
-							<span class="fragment fade-in" data-fragment-index="1">microcontrollers</span>
-						</h3>
-					</section>
-					<!--
+				<section>
+					<h3>
+						Library for controlling <br />
+						<span class="fragment strike" data-fragment-index="1">debug probes</span><br />
+						<span class="fragment fade-in" data-fragment-index="1">microcontrollers</span>
+					</h3>
+				</section>
+				<!--
 						- library for debug probes
 						- more appropriate: library to control microcontrollers
 					-->
+			</section>
+			<section>
+				<section>
+					<h2>Memory Access</h2>
 				</section>
 				<section>
-					<section><h2>Memory Access</h2></section>
-					<section>
-				    <pre>
+					<pre>
 					<code data-trim>
 						use probe_rs::Core;
 
@@ -88,13 +104,15 @@
 						let word = core.read_word_32(0x2000_0000)?;
 					</code>
 					</pre>
-					</section>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>CPU Control</h2>
 				</section>
 				<section>
-					<section><h2>CPU Control</h2></section>
-					<section>
-						<h2>Reset</h2>
-				    <pre>
+					<h2>Reset</h2>
+					<pre>
 					<code data-trim>
 						use probe_rs::Core;
 
@@ -103,10 +121,10 @@
 						core.reset()?;
 					</code>
 					</pre>
-					</section>
-					<section>
-						<h2>Breakpoints</h2>
-				    <pre>
+				</section>
+				<section>
+					<h2>Breakpoints</h2>
+					<pre>
 					<code data-trim>
 						use probe_rs::Core;
 
@@ -115,64 +133,85 @@
 						core.set_hw_breakpoint(0x1500_2000)?;
 					</code>
 					</pre>
-					</section>
 				</section>
+			</section>
 
-				<section><h2>Different Probes</h2>
-					<ul>
-						<li>J-Link</li>
-						<li>ST-LINK</li>
-						<li>CMSIS-DAP based</li>
-					</ul>
-				</section>
-				<section><h2>Different Architectures</h2>
-					<ul>
-						<li>ARM</li>
-						<li>RISC-V</li>
-					</ul>
-				</section>
+			<section>
+				<h2>Different Probes</h2>
+				<ul>
+					<li>J-Link</li>
+					<li>ST-LINK</li>
+					<li>CMSIS-DAP based</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Different Architectures</h2>
+				<ul>
+					<li>ARM</li>
+					<li>RISC-V</li>
+				</ul>
+			</section>
 
-				<section><h3>What can you do with it?</h3></section>
-				<section>
+			<section>
+				<h3>What can you do with it?</h3>
+			</section>
+			<section>
 				<section>
 					<h2>cargo-flash</h2>
-					<p><a href="https://github.com/probe-rs/cargo-flash">https://github.com/probe-rs/cargo-flash</a></a></p>
+					<p><a href="https://github.com/probe-rs/cargo-flash">https://github.com/probe-rs/cargo-flash</a></a>
+					</p>
 				</section>
 				<section>
-					<p>Asciinema Demo Here</p>
+					<div class="stretch">
+						<script class="stretch" id="asciicast-2sacfuUpeIrPMyq4tmAxlepr4"
+							src="https://asciinema.org/a/2sacfuUpeIrPMyq4tmAxlepr4.js" data-autoplay="false"></script>
+					</div>
+
 				</section>
 				<section>
 					<h2>Supported for ARM</h2>
 				</section>
-				</section>
-				<section><h2>Debugger</h2></section>
-				<section><h2>GDB Server</h2></section>
-				<section><h2>Tracing tools</h2></section>
-				<section><h2>Worst Case Execution Time Analysis</h2></section>
-				<section>
-					<h2>Thank you!</h2>
-					<p>
-						<a href="https://probe.rs/">https://probe.rs/</a>
-					</p>
-				</section>
-			</div>
+			</section>
+			<section>
+				<h2>Debugger</h2>
+			</section>
+			<section>
+				<h2>GDB Server</h2>
+			</section>
+			<section>
+				<h2>Tracing tools</h2>
+			</section>
+			<section>
+				<h2>Worst Case Execution Time Analysis</h2>
+			</section>
+			<section>
+				<h2>Thank you!</h2>
+				<p>
+					@tiwalun
+				</p>
+				<p>
+					<a href="https://probe.rs/">https://probe.rs/</a>
+				</p>
+			</section>
 		</div>
+	</div>
 
-		<script src="js/reveal.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				hash: true,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			hash: true,
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/highlight/highlight.js' },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
+	</script>
+</body>
+
 </html>
