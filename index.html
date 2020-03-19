@@ -26,15 +26,102 @@
 		<div class="reveal">
 			<div class="slides">
 				<section><h1>probe-rs</h1></section>
-				<!-- Motivation -->
-				<section>What is a debug probe?</section>
+				<!-- - Welcome 
+					 - Talk about probe-rs
+					 - Name
+					 - developer behind probe-rs
+
+					 - what is probe-rs?
+					 - library for debug probes
+				-->
+				<section>
+				<section><h2>What is a debug probe?</h2></section>
+				<!-- - Hardware
+					 - External Control of a Microcontroller
+				-->
 				<section>picture of a debug probe - separate</section>
-				<section>Why do we need a debug probe?</section>
-				<section>Library for Debug-Probes</section>
+				<!-- 
+					- Set of cables
+					- Connection to pins
+					- Can also be included on Evaluation Board
+					- Usually USB connection
+				-->
+				<section><h2>Use Cases</h2>
+					<ul>
+						<li>Flashing</li>
+						<li>Debugging</li>
+					</ul>
+				</section>
+				<!--
+					Why do we need debug probes?
+					- for these use cases here, especially during development
+				-->
+				</section>
+				<section>
+					<section><h2>What is probe-rs?</h2></section>
+					<!-- 
+						- a Rust libray
+						- provide your application with access to debug probes
+					-->
+					<section>
+						<h3>
+							Library for controlling <br />
+							<span class="fragment strike"  data-fragment-index="1">debug probes</span><br />
+							<span class="fragment fade-in" data-fragment-index="1">microcontrollers</span>
+						</h3>
+					</section>
+					<!--
+						- library for debug probes
+						- more appropriate: library to control microcontrollers
+					-->
+				</section>
+				<section>
+					<section><h2>Memory Access</h2></section>
+					<section>
+				    <pre>
+					<code data-trim>
+						use probe_rs::Core;
+
+						let core = Core::auto_attach("nrf52")?;
+
+						// Read a single 32 bit word.
+						let word = core.read_word_32(0x2000_0000)?;
+					</code>
+					</pre>
+					</section>
+				</section>
+				<section>
+					<section><h2>CPU Control</h2></section>
+					<section>
+						<h2>Reset</h2>
+				    <pre>
+					<code data-trim>
+						use probe_rs::Core;
+
+						let core = Core::auto_attach("nrf52")?;
+
+						core.reset()?;
+					</code>
+					</pre>
+					</section>
+					<section>
+						<h2>Breakpoints</h2>
+				    <pre>
+					<code data-trim>
+						use probe_rs::Core;
+
+						let core = Core::auto_attach("nrf52")?;
+
+						core.set_hw_breakpoint(0x1500_2000)?;
+					</code>
+					</pre>
+					</section>
+				</section>
+
 				<section><h2>Different Probes</h2>
 					<ul>
 						<li>J-Link</li>
-						<li>ST-Link</li>
+						<li>ST-LINK</li>
 						<li>CMSIS-DAP based</li>
 					</ul>
 				</section>
@@ -44,15 +131,30 @@
 						<li>RISC-V</li>
 					</ul>
 				</section>
-				<section>Access to memory</section>
-				<section>Control of CPU</section>
-				<section>Enable creation of tools</section>
-				<section>cargo-flash</section>
-				<section>A debugger?</section>
-				<section>Tracing tools</section>
-				<section>Execution time analyis</section>
-				<section>avatar-rs</section>
-				<section>Thank you!</section>
+
+				<section><h3>What can you do with it?</h3></section>
+				<section>
+				<section>
+					<h2>cargo-flash</h2>
+					<p><a href="https://github.com/probe-rs/cargo-flash">https://github.com/probe-rs/cargo-flash</a></a></p>
+				</section>
+				<section>
+					<p>Asciinema Demo Here</p>
+				</section>
+				<section>
+					<h2>Supported for ARM</h2>
+				</section>
+				</section>
+				<section><h2>Debugger</h2></section>
+				<section><h2>GDB Server</h2></section>
+				<section><h2>Tracing tools</h2></section>
+				<section><h2>Worst Case Execution Time Analysis</h2></section>
+				<section>
+					<h2>Thank you!</h2>
+					<p>
+						<a href="https://probe.rs/">https://probe.rs/</a>
+					</p>
+				</section>
 			</div>
 		</div>
 
